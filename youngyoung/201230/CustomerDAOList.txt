@@ -1,0 +1,36 @@
+package com.my.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.my.exception.FindException;
+import com.my.vo.Customer;
+
+public class CustomerDAOList implements CustomerDAO {
+	private List<Customer> customers =new ArrayList<Customer>();
+
+	@Override
+	public List<Customer> selectAll() throws FindException {
+		if(!customers.isEmpty()) {
+			return customers;
+		}else {
+			throw new FindException("고객이 없습니다.");
+		}
+		
+	}
+
+	@Override
+	public String selectAll1() {
+		String result="";
+		if(customers.isEmpty()) {
+			result = "고객이 없습니다.";
+			return result;
+			
+		}else {
+			result ="고객을 출력합니다.";
+			return result;
+		}
+		
+	}
+	
+}
